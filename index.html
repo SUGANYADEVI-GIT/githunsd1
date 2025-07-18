@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fetch User Age</title>
+</head>
+<body>
+
+  <h2>Check User Age</h2>
+  <input type="text" id="username" placeholder="Enter your name" />
+  <button onclick="displayUserInfo()">Get Age</button>
+
+  <p id="output"></p>
+
+  <script>
+    // Step 1: Simulated database fetch using Promise
+    function getUserAge(userName) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const fakeDatabase = {
+            "ram": 25,
+            "sita": 23,
+            "john": 30
+          };
+          resolve(fakeDatabase[userName.toLowerCase()] || "not found");
+        }, 2000); // simulates a delay
+      });
+    }
+
+    // Step 2: Async function to fetch and display age
+    async function displayUserInfo() {
+      const nameInput = document.getElementById("username").value;
+      const output = document.getElementById("output");
+
+      output.textContent = "⌛ Fetching data..."; 
+
+      const age = await getUserAge(nameInput);
+
+      if (age === "not found") {
+        output.textContent = "❌ User not found.";
+      } else {
+        output.textContent = `✅ Hello ${nameInput}, your age is ${age}.`;
+      }
+    }
+  </script>
+
+</body>
+</html>
