@@ -13,4 +13,4 @@ const numberArray = [23, 89, 12, 44, 95, 37];
 const maxValue = findMaxNumber(numberArray);
 
 // Using template literal
-console.log(`🔍 The maximum number in [${numberArray}] is ${maxValue}.`);
+console.log(` The maximum number in [${numberArray}] is ${maxValue}.`);
